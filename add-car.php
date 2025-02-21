@@ -2,7 +2,7 @@
 session_start();
 include 'db.php';
 
-// Проверка, авторизован ли пользователь
+
 if (!isset($_SESSION['user'])) {
     header('Location: login.php');
     exit();
@@ -17,13 +17,13 @@ if (isset($_POST['submit'])) {
     $price = $_POST['price'];
     $description = $_POST['description'];
 
-    // Массив для хранения путей к изображениям
+
     $image_paths = [];
 
-    // Обработка загрузки изображений
+
     if (isset($_FILES['images']) && !empty($_FILES['images']['name'][0])) {
         $total_files = count($_FILES['images']['name']);
-        $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];  // Допустимые расширения
+        $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];  
 
         for ($i = 0; $i < $total_files; $i++) {
             $image_name = $_FILES['images']['name'][$i];
@@ -31,14 +31,13 @@ if (isset($_POST['submit'])) {
             $image_size = $_FILES['images']['size'][$i];
             $image_ext = strtolower(pathinfo($image_name, PATHINFO_EXTENSION));
 
-            // Проверка на допустимые расширения
+
             if (in_array($image_ext, $allowed_extensions)) {
                 $new_image_name = uniqid() . '.' . $image_ext;
                 $target = "uploads/" . $new_image_name;
 
-                // Перемещаем изображение в папку uploads
                 if (move_uploaded_file($image_tmp, $target)) {
-                    $image_paths[] = $new_image_name;  // Добавляем имя изображения в массив
+                    $image_paths[] = $new_image_name;  
                 } else {
                     echo "Ошибка при загрузке изображения $image_name.<br>";
                 }
@@ -48,10 +47,10 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    // Преобразуем массив путей в строку, разделенную запятыми
+
     $image_paths_str = implode(',', $image_paths);
 
-    // Добавление нового объявления в базу данных
+
     $sql = "INSERT INTO cars (brand, model, year, price, description, images, user)
             VALUES ('$brand', '$model', '$year', '$price', '$description', '$image_paths_str', '$user')";
 
@@ -73,7 +72,7 @@ if (isset($_POST['submit'])) {
     <script>
         function previewImages() {
             const preview = document.querySelector('.image-preview');
-            preview.innerHTML = ''; // Очистить текущие изображения
+            preview.innerHTML = ''; 
             const files = document.querySelector('input[type=file]').files;
 
             if (files) {
@@ -92,7 +91,7 @@ if (isset($_POST['submit'])) {
             }
         }
 
-        // Функция для добавления дополнительных полей для изображений
+
         function addImageField() {
             const container = document.querySelector('.image-fields-container');
             const inputField = document.createElement('div');
@@ -150,17 +149,17 @@ if (isset($_POST['submit'])) {
                         <textarea name="description" placeholder="Описание" required></textarea>
                     </div>
                     
-                    <!-- Контейнер для полей выбора изображений -->
+
                     <div class="form-group image-fields-container">
                         <input type="file" name="images[]" accept="image/*" onchange="previewImages()">
                     </div>
                     
-                    <!-- Кнопка для добавления дополнительных полей -->
+
                     <div class="form-group">
                         <button type="button" onclick="addImageField()">Добавить ещё изображения</button>
                     </div>
 
-                    <!-- Предпросмотр изображений -->
+
                     <div class="image-preview"></div>
                     
                     <div class="form-group">

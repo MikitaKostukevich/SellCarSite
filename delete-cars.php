@@ -2,17 +2,14 @@
 include 'db.php';
 session_start();
 
-// Проверяем, есть ли сессия аутентификации
 if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
     header("Location: password.php");
     exit();
 }
 
-// Удаление объявления
 if (isset($_GET['delete'])) {
     $car_id = $_GET['delete'];
 
-    // Запрос на удаление
     $sql = "DELETE FROM cars WHERE id = $car_id";
 
     if ($conn->query($sql) === TRUE) {
@@ -22,7 +19,6 @@ if (isset($_GET['delete'])) {
     }
 }
 
-// Получаем все автомобили для отображения
 $result = $conn->query("SELECT * FROM cars ORDER BY created_at DESC");
 ?>
 

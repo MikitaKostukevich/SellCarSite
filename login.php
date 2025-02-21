@@ -1,29 +1,27 @@
 <?php
-session_start();  // Начинаем сессию
+session_start();  
 
-// Подключение к базе данных
+
 include 'db.php';
 
-// Проверка, если форма была отправлена
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Используем подготовленный запрос для предотвращения SQL-инъекций
     $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        // Получаем данные пользователя
+
         $user = $result->fetch_assoc();
 
-        // Проверяем пароль
         if (password_verify($password, $user['password'])) {
-            // Успешная авторизация
-            $_SESSION['user'] = $username;  // Сохраняем имя пользователя в сессии
-            header('Location: index.php');   // Перенаправляем на главную страницу
+
+            $_SESSION['user'] = $username;  
+            header('Location: index.php');   
             exit();
         } else {
             $error_message = 'Неверное имя пользователя или пароль';

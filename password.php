@@ -1,17 +1,17 @@
 <?php
 session_start();
 
-// Задаем правильный пароль (8081)
+
 $correct_password = '8081';
 
-// Проверяем, был ли отправлен пароль
+
 if (isset($_POST['password'])) {
     $password = $_POST['password'];
 
-    // Если пароль правильный, устанавливаем сессию
+
     if ($password == $correct_password) {
         $_SESSION['authenticated'] = true;
-        header("Location: delete-cars.php"); // Переходим на страницу удаления
+        header("Location: delete-cars.php"); 
         exit();
     } else {
         $error = "Неверный пароль!";

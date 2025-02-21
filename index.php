@@ -1,17 +1,17 @@
 <?php
-session_start();  // Начинаем сессию
+session_start(); 
 
-// Подключение к базе данных
+
 include 'db.php';
 
-// Получаем параметры фильтрации из запроса
+
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 $year_min = isset($_GET['year_min']) ? $_GET['year_min'] : '';
 $year_max = isset($_GET['year_max']) ? $_GET['year_max'] : '';
 $price_min = isset($_GET['price_min']) ? $_GET['price_min'] : '';
 $price_max = isset($_GET['price_max']) ? $_GET['price_max'] : '';
 
-// Строим SQL-запрос с фильтрацией
+
 $sql = "SELECT * FROM cars WHERE 1=1";
 
 if ($search) {
@@ -62,7 +62,7 @@ $result = $conn->query($sql);
                 </ul>
             </nav>
 
-            <!-- Форма поиска -->
+
             <form action="index.php" method="get" class="search-form">
                 <input type="text" name="search" placeholder="Поиск по марке или модели" value="<?php echo $search; ?>">
                 <button type="submit">Поиск</button>
@@ -75,7 +75,7 @@ $result = $conn->query($sql);
             <div class="container">
                 <h2>Список автомобилей</h2>
 
-                <!-- Фильтрация по году и цене -->
+
                 <form action="index.php" method="get" class="filter-form">
                     <label for="year_min">Год выпуска с:</label>
                     <input type="number" name="year_min" id="year_min" placeholder="2000" value="<?php echo $year_min; ?>">

@@ -2,7 +2,7 @@
 session_start();
 include 'db.php';
 
-// Проверка, авторизован ли пользователь
+
 if (!isset($_SESSION['user'])) {
     header('Location: login.php');
     exit();
@@ -10,7 +10,7 @@ if (!isset($_SESSION['user'])) {
 
 $user = $_SESSION['user'];
 
-// Получаем все объявления пользователя
+
 $result = $conn->query("SELECT * FROM cars WHERE user = '$user'");
 
 ?>
@@ -45,13 +45,13 @@ $result = $conn->query("SELECT * FROM cars WHERE user = '$user'");
                 <div class="car-list">
                     <?php while ($car = $result->fetch_assoc()) { ?>
                         <div class="car-card">
-                            <!-- Проверка существования файла -->
+                     
                             <?php
                                 $imagePath = 'uploads/' . $car['images'];
                                 if (file_exists($imagePath)) {
                                     echo '<img src="' . $imagePath . '" alt="' . $car['brand'] . ' ' . $car['model'] . '">';
                                 } else {
-                                    echo '<img src="uploads/default.jpg" alt="default image">';  // Путь к картинке по умолчанию
+                                    echo '<img src="uploads/default.jpg" alt="default image">'; 
                                 }
                             ?>
                             <div class="car-info">

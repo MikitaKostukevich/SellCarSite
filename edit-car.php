@@ -2,16 +2,15 @@
 session_start();
 include 'db.php';
 
-// Проверка, авторизован ли пользователь
+
 if (!isset($_SESSION['user'])) {
     header('Location: login.php');
     exit();
 }
 
-// Получаем ID объявления
+
 $id = $_GET['id'];
 
-// Проверка, является ли пользователь владельцем этого объявления
 $user = $_SESSION['user'];
 $result = $conn->query("SELECT * FROM cars WHERE id = $id");
 $car = $result->fetch_assoc();
@@ -21,7 +20,7 @@ if ($car['user'] != $user) {
     exit();
 }
 
-// Обработка отправки формы
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $brand = $_POST['brand'];
     $model = $_POST['model'];
@@ -29,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $price = $_POST['price'];
     $description = $_POST['description'];
 
-    // Обновление записи в базе данных
     $sql = "UPDATE cars SET brand='$brand', model='$model', year='$year', price='$price', description='$description' WHERE id=$id";
     if ($conn->query($sql) === TRUE) {
         echo "Объявление успешно обновлено.";

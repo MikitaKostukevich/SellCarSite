@@ -2,16 +2,13 @@
 session_start();
 include 'db.php';
 
-// Проверка, авторизован ли пользователь
 if (!isset($_SESSION['user'])) {
     header('Location: login.php');
     exit();
 }
 
-// Получаем ID объявления
 $id = $_GET['id'];
 
-// Проверка, является ли пользователь владельцем этого объявления
 $user = $_SESSION['user'];
 $result = $conn->query("SELECT * FROM cars WHERE id = $id");
 $car = $result->fetch_assoc();
@@ -21,11 +18,11 @@ if ($car['user'] != $user) {
     exit();
 }
 
-// Удаление записи
+
 if ($conn->query("DELETE FROM cars WHERE id = $id")) {
     $message = "Объявление успешно удалено.";
     $messageType = "success";
-    header("refresh:3; url=index.php"); // Перенаправление на главную страницу через 3 секунды
+    header("refresh:3; url=index.php"); 
 } else {
     $message = "Ошибка при удалении объявления.";
     $messageType = "error";

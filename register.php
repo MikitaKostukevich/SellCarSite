@@ -1,17 +1,16 @@
 <?php
-// Подключение к базе данных
 include 'db.php';
 
-// Проверка, если форма была отправлена
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $email = $_POST['email'];
 
-    // Хеширование пароля
+
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Проверка, если пользователь с таким именем уже существует
+
     $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -20,12 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($result->num_rows > 0) {
         $error_message = "Пользователь с таким именем уже существует.";
     } else {
-        // Вставка нового пользователя в базу данных
+
         $stmt = $conn->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $username, $hashed_password, $email);
         $stmt->execute();
 
-        // Перенаправление на страницу авторизации после успешной регистрации
         header('Location: login.php');
         exit();
     }
