@@ -1,0 +1,190 @@
+/* ======== Стили обнуления ======== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fd;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ======== Шапка ======== */
+header {
+    background-color: #1e2a47;
+    color: white;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.8rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #4aa3df;
+}
+
+/* ======== Основной контент ======== */
+main {
+    padding: 40px 0;
+}
+
+/* ======== Блок добавления автомобиля ======== */
+.add-car-section {
+    background: white;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.add-car-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #1e2a47;
+    text-align: center;
+}
+
+/* ======== Форма ======== */
+.form-group {
+    margin-bottom: 15px;
+}
+
+input,
+textarea,
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #1e2a47;
+    outline: none;
+    box-shadow: 0 0 5px rgba(30, 42, 71, 0.3);
+}
+
+input[type="file"] {
+    padding: 5px;
+}
+
+/* ======== Кнопка отправки ======== */
+button {
+    background-color: #1e2a47;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #162239;
+    transform: translateY(-2px);
+}
+
+/* ======== Превью изображений ======== */
+.image-preview {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.image-preview img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.image-preview img:hover {
+    transform: scale(1.1);
+}
+
+/* ======== Футер ======== */
+footer {
+    background: #1e2a47;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* ======== Адаптивность ======== */
+@media (max-width: 1024px) {
+    .container {
+        width: 95%;
+    }
+    
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    nav ul {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .add-car-section {
+        padding: 20px;
+    }
+    
+    .image-preview img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .add-car-section h2 {
+        font-size: 1.6rem;
+    }
+    
+    .image-preview img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    input, textarea, button {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}

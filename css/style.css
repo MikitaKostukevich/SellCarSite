@@ -1,0 +1,321 @@
+/* ======== Стили обнуления ======== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fd;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ======== Контейнер ======== */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ======== Шапка ======== */
+header {
+    background-color: #1e2a47;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    flex: 1;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #4aa3df;
+}
+
+/* ======== Форма поиска ======== */
+.search-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.search-form input {
+    padding: 10px;
+    width: 100%;
+    max-width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.search-form button {
+    padding: 10px;
+    background-color: #4a5b7b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.search-form button:hover {
+    background-color: #364965;
+}
+
+/* ======== Основной контент ======== */
+main {
+    padding: 40px 0;
+}
+
+/* ======== Блок с карточками автомобилей ======== */
+.car-list-section {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #1e2a47;
+}
+
+/* ======== Форма фильтрации ======== */
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-form input,
+.filter-form select {
+    flex: 1;
+    min-width: 150px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.filter-form button {
+    padding: 10px 15px;
+    background-color: #1e2a47;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.filter-form button:hover {
+    background-color: #162239;
+}
+
+/* ======== Адаптивность ======== */
+@media (max-width: 1024px) {
+    .filter-form {
+        justify-content: center;
+    }
+    
+    .filter-form input,
+    .filter-form select {
+        flex: none;
+        width: 45%;
+    }
+    
+    .filter-form button {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .filter-form {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .filter-form input,
+    .filter-form select,
+    .filter-form button {
+        width: 100%;
+    }
+}
+
+
+/* ======== Карточки автомобилей ======== */
+.car-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.car-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.car-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 3px solid #1e2a47;
+}
+
+.car-info {
+    padding: 20px;
+}
+
+.car-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #1e2a47;
+}
+
+.car-info p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.car-info .btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #1e2a47;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.car-info .btn:hover {
+    background-color: #162239;
+}
+
+/* ======== Футер ======== */
+footer {
+    background: #1e2a47;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* ======== Адаптивность ======== */
+@media (max-width: 1024px) {
+    .container {
+        width: 95%;
+    }
+    
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .search-form {
+        justify-content: center;
+        width: 100%;
+    }
+
+    nav ul {
+        justify-content: center;
+        padding-top: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .car-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .car-card img {
+        height: 160px;
+    }
+    
+    .car-info h3 {
+        font-size: 1.2rem;
+    }
+    
+    .car-info .btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    .filter-form {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .car-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .car-card img {
+        height: 140px;
+    }
+    
+    .car-info {
+        padding: 15px;
+    }
+    
+    .car-info h3 {
+        font-size: 1.1rem;
+    }
+    
+    .car-info .btn {
+        font-size: 0.85rem;
+        padding: 7px 10px;
+    }
+    
+    .filter-form {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .filter-form input,
+    .filter-form button {
+        width: 100%;
+    }
+
+    .search-form input {
+        max-width: 100%;
+    }
+}
