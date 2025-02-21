@@ -67,5 +67,7 @@ if ($conn->query("DELETE FROM cars WHERE id = $id")) {
             <p>&copy; 2025 АвтоМаркет. Все права защищены.</p>
         </div>
     </footer>
+    <script src="js/delete-car.js"></script>
+
 </body>
 </html>

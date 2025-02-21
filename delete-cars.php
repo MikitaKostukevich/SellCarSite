@@ -70,5 +70,6 @@ $result = $conn->query("SELECT * FROM cars ORDER BY created_at DESC");
             <p>&copy; 2025 АвтоМаркет. Все права защищены.</p>
         </div>
     </footer>
+    <script src="js/delete-car.js"></script>
 </body>
 </html>

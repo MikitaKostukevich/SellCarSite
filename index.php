@@ -118,5 +118,7 @@ $result = $conn->query($sql);
             <p>&copy; 2025 АвтоМаркет. Все права защищены.</p>
         </div>
     </footer>
+    <script src="js/index.js"></script>
+    <script src="js/search.js"></script>
 </body>
 </html>

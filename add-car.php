@@ -175,5 +175,6 @@ if (isset($_POST['submit'])) {
             <p>&copy; 2025 АвтоМаркет. Все права защищены.</p>
         </div>
     </footer>
+    <script src="js/add-car.js"></script>
 </body>
 </html>

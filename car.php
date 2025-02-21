@@ -49,5 +49,7 @@ $car = $result->fetch_assoc();
             <p>&copy; 2025 АвтоМаркет. Все права защищены.</p>
         </div>
     </footer>
+    <script src="js/car-details.js"></script>
+
 </body>
 </html>
