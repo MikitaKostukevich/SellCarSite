@@ -20,19 +20,18 @@ $result = $conn->query($sql);
         <div class="container">
             <h1>Новости</h1>
             <nav>
-                <ul>
+
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
                     <li><a href="index.php">Главная</a></li>
                     <?php if (isset($_SESSION['user'])): ?>
                         <li><a href="logout.php">Выйти (<?= htmlspecialchars($_SESSION['user']); ?>)</a></li>
                     <?php else: ?>
                         <li><a href="login.php">Войти</a></li>
                     <?php endif; ?>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main class="container">
         <?php if (isset($_SESSION['user'])): ?>
             <a href="add-news.php" class="btn add-btn">Добавить новость</a>
         <?php endif; ?>
