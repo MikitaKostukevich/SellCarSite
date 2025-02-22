@@ -1,0 +1,120 @@
+/* Основные стили */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f8f9fa;
+    margin: 0;
+    color: #333;
+}
+
+/* Контейнер */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+/* Заголовки */
+h1, h2 {
+    text-align: center;
+    color: #222;
+    font-weight: 600;
+}
+
+/* Список новостей */
+.news-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Карточка новости */
+.news-card {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    width: 320px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Дата новости */
+.news-date {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #0056b3, #004092);
+    transform: scale(1.05);
+}
+
+/* Кнопка "Добавить новость" */
+.add-btn {
+    display: block;
+    width: max-content;
+    margin: 20px auto;
+    background: linear-gradient(135deg, #28a745, #218838);
+}
+
+.add-btn:hover {
+    background: linear-gradient(135deg, #218838, #1c6e32);
+}
+
+/* Кнопка "Редактировать" */
+.edit-btn {
+    background: linear-gradient(135deg, #ffc107, #e0a800);
+}
+
+.edit-btn:hover {
+    background: linear-gradient(135deg, #e0a800, #c69500);
+}
+
+/* Кнопка "Удалить" */
+.delete-btn {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+}
+
+.delete-btn:hover {
+    background: linear-gradient(135deg, #c82333, #a71d2a);
+}
+
+/* Сообщения об ошибках */
+.error {
+    color: red;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .news-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .news-card {
+        width: 100%;
+        max-width: 400px;
+    }
+}

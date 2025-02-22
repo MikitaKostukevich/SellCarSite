@@ -20,6 +20,9 @@ $result = $conn->query("SELECT * FROM news ORDER BY created_at DESC");
     <div class="container">
         <h1>Управление новостями</h1>
         <a href="add-news.php" class="btn">Добавить новость</a>
+        <a href="edit-news.php?id=<?= $row['id'] ?>" class="btn">Редактировать</a>
+        <a href="delete-news.php?id=<?= $row['id'] ?>" class="btn btn-danger" onclick="return confirm('Удалить новость?')">Удалить</a>
+
         <div class="news-list">
             <?php while ($row = $result->fetch_assoc()): ?>
                 <div class="news-card">

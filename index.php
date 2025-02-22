@@ -52,11 +52,13 @@ $result = $conn->query($sql);
                     <li><a href="index.php">Главная</a></li>
                     <?php if (isset($_SESSION['user'])): ?>
                         <li><a href="profile.php">Личный кабинет</a></li>
+                        <li><a href="news.php">Новости</a></li>
                         <li><a href="logout.php">Выйти</a></li>
                         <li><a href="password.php"> Админ-панель</a></li>
                     <?php else: ?>
                         <li><a href="login.php">Войти</a></li>
                         <li><a href="register.php">Регистрация</a></li>
+                        <li><a href="news.php">Новости</a></li>
                         <li><a href="password.php"> Админ-панель</a></li>
                     <?php endif; ?>
                 </ul>

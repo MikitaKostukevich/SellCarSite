@@ -1,7 +1,10 @@
 <?php
-require 'db.php'; // Подключаем базу данных
+session_start();
+include 'db.php';
 
-$result = $conn->query("SELECT * FROM news ORDER BY created_at DESC");
+// Получение списка новостей
+$sql = "SELECT * FROM news ORDER BY created_at DESC";
+$result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -13,19 +16,45 @@ $result = $conn->query("SELECT * FROM news ORDER BY created_at DESC");
     <link rel="stylesheet" href="css/news.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Новости</h1>
-        <div class="news-list">
-            <?php while ($row = $result->fetch_assoc()): ?>
+    <header>
+        <div class="container">
+            <h1>Новости</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.php">Главная</a></li>
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <li><a href="logout.php">Выйти (<?= htmlspecialchars($_SESSION['user']); ?>)</a></li>
+                    <?php else: ?>
+                        <li><a href="login.php">Войти</a></li>
+                    <?php endif; ?>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <?php if (isset($_SESSION['user'])): ?>
+            <a href="add-news.php" class="btn add-btn">Добавить новость</a>
+        <?php endif; ?>
+
+        <section class="news-list">
+            <?php while ($news = $result->fetch_assoc()): ?>
                 <div class="news-card">
-                    <img src="uploads/<?= $row['image'] ?>" alt="<?= $row['title'] ?>">
-                    <h2><?= $row['title'] ?></h2>
-                    <p><?= mb_strimwidth(strip_tags($row['content']), 0, 100, "...") ?></p>
-                    <a href="news-details.php?id=<?= $row['id'] ?>" class="btn">Читать далее</a>
+                    <h2><?= htmlspecialchars($news['title']); ?></h2>
+                    <p class="news-date"><?= date('d.m.Y H:i', strtotime($news['created_at'])); ?></p>
+                    <p><?= nl2br(htmlspecialchars(mb_strimwidth($news['content'], 0, 150, '...'))); ?></p>
+                    <a href="news-details.php?id=<?= $news['id']; ?>" class="btn">Читать далее</a>
+
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <a href="edit-news.php?id=<?= $news['id']; ?>" class="btn edit-btn">Редактировать</a>
+                        <a href="delete-news.php?id=<?= $news['id']; ?>" 
+                           onclick="return confirm('Вы уверены, что хотите удалить эту новость?');" 
+                           class="btn delete-btn">Удалить</a>
+                    <?php endif; ?>
                 </div>
             <?php endwhile; ?>
-        </div>
-    </div>
+        </section>
+    </main>
     <script src="js/news.js"></script>
 </body>
 </html>

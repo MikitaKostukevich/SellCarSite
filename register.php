@@ -1,32 +1,40 @@
 <?php
+session_start();
 include 'db.php';
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = trim($_POST['username']);
+    $email = trim($_POST['email']);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $email = $_POST['email'];
+    // Проверяем, существует ли уже такой email
+    $check_query = "SELECT id FROM users WHERE email = ?";
+    $stmt_check = $conn->prepare($check_query);
+    $stmt_check->bind_param("s", $email);
+    $stmt_check->execute();
+    $stmt_check->store_result();
 
-
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        $error_message = "Пользователь с таким именем уже существует.";
+    if ($stmt_check->num_rows > 0) {
+        $error_message = "Этот email уже зарегистрирован!";
     } else {
+        // Добавляем пользователя
+        $insert_query = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+        $stmt = $conn->prepare($insert_query);
+        $stmt->bind_param("sss", $username, $email, $password);
 
-        $stmt = $conn->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $username, $hashed_password, $email);
-        $stmt->execute();
-
-        header('Location: login.php');
-        exit();
+        if ($stmt->execute()) {
+            $_SESSION['user'] = $username;
+            $_SESSION['role'] = 'user'; // По умолчанию обычный пользователь
+            header("Location: index.php");
+            exit();
+        } else {
+            $error_message = "Ошибка при регистрации!";
+        }
+        $stmt->close(); // Закрываем только если запрос на добавление выполнялся
     }
+
+    $stmt_check->close(); // Закрываем проверочный запрос
+    $conn->close();
 }
 ?>
 
@@ -45,75 +53,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <form action="register.php" method="POST">
             <input type="text" name="username" placeholder="Имя пользователя" required>
+            <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Пароль" required>
-            <input type="email" name="email" placeholder="Электронная почта" required>
             <button type="submit">Зарегистрироваться</button>
         </form>
-
-        <p>Уже есть аккаунт? <a href="login.php">Войдите</a></p>
     </div>
 </body>
 </html>
-
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f9;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-    }
-
-    .register-container {
-        background: #fff;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 300px;
-        text-align: center;
-    }
-
-    h2 {
-        margin-bottom: 20px;
-    }
-
-    input {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-
-    button {
-        width: 100%;
-        padding: 10px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: #45a049;
-    }
-
-    .error {
-        color: red;
-        text-align: center;
-        margin-bottom: 15px;
-    }
-
-    a {
-        color: #4CAF50;
-        text-decoration: none;
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
-</style>
