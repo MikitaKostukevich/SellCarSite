@@ -3,39 +3,45 @@ document.addEventListener("DOMContentLoaded", function () {
     const imageInput = document.getElementById("image-input");
     const previewImage = document.getElementById("preview-image");
 
-    // При перетаскивании изображения
+    // Открытие окна выбора файла при клике
+    uploadArea.addEventListener("click", () => {
+        imageInput.click();
+    });
+
+    // Обработка выбора файла
+    imageInput.addEventListener("change", function () {
+        const file = this.files[0];
+        showPreview(file);
+    });
+
+    // Перетаскивание файла
     uploadArea.addEventListener("dragover", (e) => {
         e.preventDefault();
-        uploadArea.classList.add("dragging");
+        uploadArea.style.backgroundColor = "rgba(0, 123, 255, 0.1)";
     });
 
     uploadArea.addEventListener("dragleave", () => {
-        uploadArea.classList.remove("dragging");
+        uploadArea.style.backgroundColor = "transparent";
     });
 
     uploadArea.addEventListener("drop", (e) => {
         e.preventDefault();
-        uploadArea.classList.remove("dragging");
+        uploadArea.style.backgroundColor = "transparent";
 
-        if (e.dataTransfer.files.length > 0) {
-            imageInput.files = e.dataTransfer.files;
-            previewFile(imageInput.files[0]);
-        }
+        const file = e.dataTransfer.files[0];
+        imageInput.files = e.dataTransfer.files; // Добавляем файл в input
+        showPreview(file);
     });
 
-    // При выборе файла вручную
-    imageInput.addEventListener("change", function () {
-        if (this.files.length > 0) {
-            previewFile(this.files[0]);
+    // Функция для отображения превью
+    function showPreview(file) {
+        if (file && file.type.startsWith("image/")) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewImage.src = e.target.result;
+                previewImage.style.display = "block";
+            };
+            reader.readAsDataURL(file);
         }
-    });
-
-    function previewFile(file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            previewImage.src = e.target.result;
-            previewImage.style.display = "block";
-        };
-        reader.readAsDataURL(file);
     }
 });

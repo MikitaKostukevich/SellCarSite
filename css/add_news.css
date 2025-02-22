@@ -23,62 +23,58 @@ body {
 h2 {
     color: #222;
     font-size: 24px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 /* Поля ввода */
 input, textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 16px;
+    transition: all 0.3s ease;
 }
 
-/* Поле ввода текста */
-textarea {
-    height: 100px;
-    resize: none;
+input:focus, textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    outline: none;
 }
 
-/* Зона загрузки */
+/* Зона загрузки изображения */
 .upload-area {
     border: 2px dashed #007bff;
     padding: 20px;
-    border-radius: 10px;
-    text-align: center;
+    margin-bottom: 15px;
+    border-radius: 8px;
     cursor: pointer;
+    text-align: center;
     transition: all 0.3s ease;
 }
 
 .upload-area p {
-    color: #555;
     margin: 0;
+    color: #007bff;
+    font-weight: bold;
 }
 
 .upload-area span {
-    color: #007bff;
-    font-weight: bold;
+    color: #0056b3;
+    text-decoration: underline;
     cursor: pointer;
 }
 
-.upload-area.dragging {
-    background: rgba(0, 123, 255, 0.1);
-}
-
-/* Скрытое поле */
-#image-input {
-    display: none;
+.upload-area:hover {
+    background-color: rgba(0, 123, 255, 0.1);
 }
 
 /* Превью изображения */
 #preview-image {
     max-width: 100%;
-    height: auto;
     margin-top: 10px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Кнопки */
@@ -94,7 +90,6 @@ textarea {
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
-    margin-top: 20px;
 }
 
 .btn:hover {
@@ -102,11 +97,19 @@ textarea {
     transform: scale(1.05);
 }
 
-/* Кнопка назад */
+/* Кнопка "Назад" */
 .btn-back {
-    background: #6c757d;
+    background: linear-gradient(135deg, #6c757d, #545b62);
+    margin-top: 10px;
 }
 
 .btn-back:hover {
-    background: #5a6268;
+    background: linear-gradient(135deg, #545b62, #3d4349);
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
 }
