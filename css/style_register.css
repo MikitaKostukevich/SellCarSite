@@ -1,0 +1,97 @@
+/* Подключаем красивый шрифт */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Основные стили */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #28a745, #218838);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Контейнер формы */
+.register-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Заголовок */
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Поля ввода */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Эффект при фокусе */
+input:focus {
+    border-color: #28a745;
+    outline: none;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.4);
+}
+
+/* Кнопка регистрации */
+button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #28a745, #218838);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Эффект при наведении */
+button:hover {
+    background: linear-gradient(135deg, #218838, #1c6e32);
+    transform: scale(1.05);
+}
+
+/* Сообщения об ошибках */
+.error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .register-container {
+        width: 90%;
+        padding: 20px;
+    }
+}
