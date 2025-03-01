@@ -18,6 +18,7 @@ h1, h2 {
     text-align: center;
     color: #222;
     font-weight: 600;
+    margin-bottom: 20px;
 }
 
 /* Список новостей */
@@ -41,6 +42,7 @@ h1, h2 {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .news-card:hover {
@@ -128,6 +130,50 @@ h1, h2 {
     font-weight: 500;
 }
 
+/* Стили для шапки */
+header {
+    background-color: #1e2a47;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    margin: 0;
+    transition: transform 0.3s ease;
+}
+
+header h1:hover {
+    transform: scale(1.05);
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #4aa3df;
+}
+
+nav ul {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+}
+
 /* Адаптивность */
 @media (max-width: 768px) {
     .news-list {
@@ -139,45 +185,24 @@ h1, h2 {
         width: 100%;
         max-width: 400px;
     }
-}
 
-/* Стили для шапки */
-.header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    background: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}
-
-/* Контейнер логотипа */
-.logo-container {
-    text-align: center;
+    nav {
+        flex-direction: column;
+    }
 }
 
 /* Логотип */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
 .logo {
     height: 60px;
     max-width: 100%;
     transition: transform 0.3s ease-in-out;
 }
 
-/* Эффект при наведении */
 .logo:hover {
     transform: scale(1.05);
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .logo {
-        height: 50px;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo {
-        height: 40px;
-    }
 }

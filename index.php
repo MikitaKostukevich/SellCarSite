@@ -67,14 +67,7 @@ $result = $conn->query($sql);
                     <?php endif; ?>
                 </ul>
             </nav>
-
-
-            <form action="index.php" method="get" class="search-form">
-                <input type="text" name="search" placeholder="Поиск по марке или модели" value="<?php echo $search; ?>">
-                <button type="submit">Поиск</button>
-            </form>
         </div>
-
     </header>
 
     <main>
@@ -82,6 +75,12 @@ $result = $conn->query($sql);
             <div class="container">
                 <h2>Список автомобилей</h2>
 
+                <form action="index.php" method="get" class="search-form">
+                <input type="text" name="search" placeholder="Поиск по марке или модели" value="<?php echo $search; ?>">
+                <button type="submit">Поиск</button>
+            </form>
+
+            <br>
 
                 <form action="index.php" method="get" class="filter-form">
                     <label for="year_min">Год выпуска с:</label>

@@ -15,27 +15,24 @@ $result = $conn->query($sql);
     <title>Новости</title>
     <link rel="stylesheet" href="css/news.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
-    
-    <!-- Подключаем шрифт (если ещё не подключен) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-<header>
-        <div class="container">
-            <h1>Новости</h1>
-            <nav>
-
-            </nav>
-        </div>
+    <header>
+        <h1>Новости</h1>
+        <nav>
+            <ul>
+                <li><a href="index.php">Главная</a></li>
+                <?php if (isset($_SESSION['user'])): ?>
+                    <li><a href="logout.php">Выйти (<?= htmlspecialchars($_SESSION['user']); ?>)</a></li>
+                <?php else: ?>
+                    <li><a href="login.php">Войти</a></li>
+                <?php endif; ?>
+            </ul>
+        </nav>
     </header>
 
     <main class="container">
-                    <li><a href="index.php">Главная</a></li>
-                    <?php if (isset($_SESSION['user'])): ?>
-                        <li><a href="logout.php">Выйти (<?= htmlspecialchars($_SESSION['user']); ?>)</a></li>
-                    <?php else: ?>
-                        <li><a href="login.php">Войти</a></li>
-                    <?php endif; ?>
         <?php if (isset($_SESSION['user'])): ?>
             <a href="add-news.php" class="btn add-btn">Добавить новость</a>
         <?php endif; ?>
@@ -58,6 +55,7 @@ $result = $conn->query($sql);
             <?php endwhile; ?>
         </section>
     </main>
+
     <script src="js/news.js"></script>
 </body>
 </html>

@@ -26,9 +26,8 @@ header {
     color: white;
     padding: 15px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    flex-direction: column; /* Элементы расположены вертикально */
+    gap: 20px;
 }
 
 header h1 {
@@ -41,6 +40,53 @@ header h1:hover {
     transform: scale(1.05);
 }
 
+/* Стили для выпадающего меню */
+.profile-link-wrapper {
+    position: relative;
+}
+
+.profile-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: block;
+}
+
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    background-color: #1e2a47;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    right: 0;
+    min-width: 150px;
+    border-radius: 5px;
+}
+
+.profile-dropdown li {
+    padding: 10px;
+}
+
+.profile-dropdown li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    display: block;
+}
+
+.profile-dropdown li a:hover {
+    background-color: #4aa3df;
+}
+
+/* Показываем выпадающий список при наведении на профиль */
+.profile-link-wrapper:hover .profile-dropdown {
+    display: block;
+}
+
+
+/* Стили для навигационного меню */
 nav ul {
     list-style: none;
     display: flex;
@@ -63,27 +109,30 @@ nav ul li a:hover {
     color: #4aa3df;
 }
 
+
+
+
 /* ======== Форма поиска ======== */
 .search-form {
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
-    margin-top: 10px;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .search-form input {
+    flex: 1;
+    min-width: 150px;
     padding: 10px;
-    width: 100%;
-    max-width: 250px;
-    border: 1px solid #ccc;
     border-radius: 5px;
+    border: 1px solid #ccc;
     font-size: 1rem;
 }
 
 .search-form button {
-    padding: 10px;
-    background-color: #4a5b7b;
+    padding: 10px 15px;
+    background-color: #1e2a47;
     color: white;
     border: none;
     border-radius: 5px;
@@ -118,7 +167,7 @@ h2 {
 .filter-form {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 10px;
     margin-bottom: 20px;
 }
@@ -251,7 +300,7 @@ footer {
     }
     
     .search-form {
-        justify-content: center;
+        justify-content: start;
         width: 100%;
     }
 
@@ -318,46 +367,5 @@ footer {
 
     .search-form input {
         max-width: 100%;
-    }
-}
-
-/* Стили для шапки */
-.header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    background: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}
-
-/* Контейнер логотипа */
-.logo-container {
-    text-align: center;
-}
-
-/* Логотип */
-.logo {
-    height: 10px;
-    max-width: 60px;
-    transition: transform 0.3s ease-in-out;
-}
-
-/* Эффект при наведении */
-.logo:hover {
-    transform: scale(1.05);
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .logo {
-        height: 50px;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo {
-        height: 40px;
     }
 }
