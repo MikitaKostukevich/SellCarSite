@@ -25,9 +25,13 @@ if (isset($_POST['password'])) {
     <meta charset="UTF-8">
     <title>Вход</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- Подключаем шрифт (если ещё не подключен) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+<header>
         <div class="container">
             <h1>АвтоМаркет</h1>
         </div>

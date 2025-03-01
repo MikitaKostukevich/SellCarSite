@@ -29,9 +29,13 @@ $result = $conn->query("SELECT * FROM cars ORDER BY created_at DESC");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Удаление объявлений</title>
     <link rel="stylesheet" href="css/style_car.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- Подключаем шрифт (если ещё не подключен) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+<header>
         <div class="container">
             <h1>АвтоМаркет - Удаление объявлений</h1>
             <nav>

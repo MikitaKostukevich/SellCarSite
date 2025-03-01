@@ -14,9 +14,13 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Новости</title>
     <link rel="stylesheet" href="css/news.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- Подключаем шрифт (если ещё не подключен) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+<header>
         <div class="container">
             <h1>Новости</h1>
             <nav>

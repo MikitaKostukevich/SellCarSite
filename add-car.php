@@ -69,6 +69,10 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Добавить авто</title>
     <link rel="stylesheet" href="css/style_addcar.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- Подключаем шрифт (если ещё не подключен) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <script>
         function previewImages() {
             const preview = document.querySelector('.image-preview');

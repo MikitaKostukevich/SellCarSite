@@ -40,8 +40,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <title>Авторизация</title>
     <link rel="stylesheet" href="css/style_login.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- Подключаем шрифт (если ещё не подключен) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+<header>
     <div class="login-container">
         <h2>Авторизация</h2>
 

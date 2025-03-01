@@ -113,3 +113,44 @@ input:focus, textarea:focus {
         width: 90%;
     }
 }
+
+/* Стили для шапки */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Контейнер логотипа */
+.logo-container {
+    text-align: center;
+}
+
+/* Логотип */
+.logo {
+    height: 60px;
+    max-width: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Эффект при наведении */
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .logo {
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        height: 40px;
+    }
+}
