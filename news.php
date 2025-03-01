@@ -15,7 +15,6 @@ $result = $conn->query($sql);
     <title>Новости</title>
     <link rel="stylesheet" href="css/news.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>

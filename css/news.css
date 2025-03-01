@@ -13,10 +13,10 @@ body {
     margin: 20px auto;
 }
 
-/* Заголовки */
-h1, h2 {
+/* Заголовки на странице */
+h1 {
     text-align: center;
-    color: #222;
+    color: white;  /* Заголовок "Новости" белого цвета */
     font-weight: 600;
     margin-bottom: 20px;
 }
@@ -31,7 +31,7 @@ h1, h2 {
 
 /* Карточка новости */
 .news-card {
-    background: #fff;
+    background: #f1f3f7;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -48,6 +48,13 @@ h1, h2 {
 .news-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Заголовок в карточке новости */
+.news-card h2 {
+    color: #1e2a47;  /* Заголовок внутри карточки будет цвета #1e2a47 */
+    font-size: 1.5rem;
+    margin-bottom: 15px;
 }
 
 /* Дата новости */
@@ -123,6 +130,11 @@ h1, h2 {
     background: linear-gradient(135deg, #c82333, #a71d2a);
 }
 
+/* Добавим отступы между кнопками на карточке */
+.news-card .btn {
+    margin-top: 10px;
+}
+
 /* Сообщения об ошибках */
 .error {
     color: red;
@@ -134,16 +146,16 @@ h1, h2 {
 header {
     background-color: #1e2a47;
     color: white;
-    padding: 15px;
+    padding: 20px 15px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
 header h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin: 0;
     transition: transform 0.3s ease;
 }
@@ -154,7 +166,10 @@ header h1:hover {
 
 nav {
     display: flex;
+    flex-direction: column;
     gap: 15px;
+    margin-top: 15px;
+    align-items: center;
 }
 
 nav a {
@@ -188,6 +203,7 @@ nav ul {
 
     nav {
         flex-direction: column;
+        align-items: center;
     }
 }
 
