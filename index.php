@@ -52,21 +52,21 @@ $result = $conn->query($sql);
         <div class="container">
             <h1>АвтоМаркет</h1>
             <nav>
-                <ul>
-                    <li><a href="index.php">Главная</a></li>
-                    <?php if (isset($_SESSION['user'])): ?>
-                        <li><a href="profile.php">Личный кабинет</a></li>
-                        <li><a href="news.php">Новости</a></li>
-                        <li><a href="logout.php">Выйти</a></li>
-                        <li><a href="password.php"> Админ-панель</a></li>
-                    <?php else: ?>
-                        <li><a href="login.php">Войти</a></li>
-                        <li><a href="register.php">Регистрация</a></li>
-                        <li><a href="news.php">Новости</a></li>
-                        <li><a href="password.php"> Админ-панель</a></li>
-                    <?php endif; ?>
-                </ul>
-            </nav>
+    <ul>
+        <li><a href="index.php">Главная</a></li>
+        <?php if (isset($_SESSION['user'])): ?>
+            <li><a href="profile.php">Личный кабинет (<?php echo htmlspecialchars($_SESSION['user']); ?>)</a></li>
+            <li><a href="news.php">Новости</a></li>
+            <li><a href="logout.php">Выйти</a></li>
+                <li><a href="password.php">Админ-панель</a></li>
+        <?php else: ?>
+            <li><a href="login.php">Войти</a></li>
+            <li><a href="register.php">Регистрация</a></li>
+            <li><a href="news.php">Новости</a></li>
+        <?php endif; ?>
+    </ul>
+</nav>
+
         </div>
     </header>
 

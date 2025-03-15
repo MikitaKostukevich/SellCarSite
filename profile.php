@@ -29,17 +29,18 @@ $result = $conn->query("SELECT * FROM cars WHERE user = '$user'");
 </head>
 <body>
 <header>
-        <div class="container">
-            <h1>Личный кабинет</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.php">Главная</a></li>
-                    <li><a href="add-car.php">Добавить объявление</a></li>
-                    <li><a href="logout.php">Выйти</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div class="container">
+        <h1>Личный кабинет (<?php echo htmlspecialchars($user); ?>)</h1>
+        <nav>
+            <ul>
+                <li><a href="index.php">Главная</a></li>
+                <li><a href="add-car.php">Добавить объявление</a></li>
+                <li><a href="logout.php">Выйти</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
 
     <main>
         <section class="car-list-section">
